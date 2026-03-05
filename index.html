@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Jogo da Memória</title>
+</head>
+<body>
+    <header>
+        <i id="menu_icon" class="fa-solid fa-bars" onclick="menuShow()"></i>
+        <p id="timer">⏱ 00:00:00</p>
+        <i id="mode_icon" class="fa-solid fa-sun"></i>
+    </header>
+
+    <div id="nicknameModal" class="modal">
+        <div class="modal-content">
+            <div id="cabecalhoMc"> <h2>Você entrou no top 10 😎</h2></div>
+            <div id="textoMc">
+                <p id="textoInfo"></p>
+                <p id="rankingPreview"></p>
+            </div>
+            <div id="inptBnt">
+                <input type="text" id="nicknameInput" maxlength="12" placeholder="Digite aqui...">
+                <button id="saveScoreBtn">SALVAR</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="ranking" id="rankingOn">
+        <div id="btnFecharTop">
+                <button id="closedRanking"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        <div id="cabecalhoTo10">
+            <h2>🏅 TOP 10 🏅</h2>
+        </div>
+        <div id="rankingList"></div>
+    </div>
+
+    <div id="menu-list">
+        <p id="btnRanking"> &nbsp; 🏅 Top 10 - melhores tempos &nbsp; </p>
+        <hr>
+        <p id="btnMelhorTempo"> &nbsp; 💪 Seu melhor tempo &nbsp;</p>
+        <hr>
+        <p id="abrirJanelaSobre"> &nbsp; 💬 Sobre o game &nbsp; </p>
+        <hr>
+        <p><a href="http://epico11.github.io/home/"> &nbsp; 🔍 Confira outros projetinhos&nbsp; </a></p>
+        <hr>
+        <p id="btnReiniciar"> &nbsp; 🔄️ Reiniciar jogo</p>
+    </div>
+
+    <div id="melhorTempoIndividual">
+        <div id="janelaMDI">
+            <div id="cabecalhoMDI">
+                <span>Seu melhor tempo</span>
+                <div>
+                    <i class="fa-solid fa-xmark" id="closeMDI"></i>
+                </div>
+            </div>
+            <div id="conteudoMDI">
+                <p id="bestTime">--:--:--</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="fundo1">
+        <div id="game"></div>
+        <!-- <button onclick="startGame()">Reiniciar</button> -->
+        <!-- <button id="btnReiniciar">REINICIAR</button> -->
+    </div>
+
+    <footer>
+        <a href="https://github.com/epico11/"><i id="github_icon" class="fa-brands fa-github fa-beat"></i></a>
+    </footer>
+
+    <div id="victory" class="hidden">
+        <div class="victory-box">
+            <div id="cabecalhoVic">Você não conseguiu entrar no top 10 🥺</div>
+            <div id="textoVicInfo">
+                <h2></h2>
+            </div>
+            <div id="buttonVic">
+                <button id="btnReiniciarVictory">TENTAR NOVAMENTE</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="sobreFundo">
+        <div id="sobreJanela">
+            <div id="cabecalhoJanelaSobre">
+                <div id="tituloSobre">
+                    Sobre o game
+                </div>
+                <div id="divClosedSobre">
+                    <button id="closedSobre"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </div>
+            <div id="conteudoJanelaSobre">
+                <span> 
+                    Jogo da memória feito com o foco de encontrar todos os pares no menor tempo possível. 
+                </span>
+                <span>
+                    Há um top 10 dos menores tempos obtidos pelos usuários, o que torna o jogo competitivo.
+                </span>
+                <span>
+                    O game também mostra o seu melhor tempo já obtido.
+                </span>
+                <span>
+                    Há uma opção de reiniciar jogo, para o caso do usuário insastifeito com o tempo, que queira recomeçar antes de ter encontrado todos os pares.   
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+
+    <script type="module" src="js/firebase.js"></script>
+    <script type="module" src="js/script.js"></script>
+
+</body>
+</html>
+
+<!-- na tela de vitoria aparece a mensagem
+(Infelizmente você não conseguiu entrar no top 10 T-T) 
+o tempo atual (seu tempo: 00:00:00)
+tempo mínimo exigido (00:00:00)
+
+na tela salvar: 
+(Você entrou no top 10)
+ou
+(Seu tempo atual ficou em xº no top 10)
+(seu tempo: 00:00:00)
+(Crie seu nickname para ficar registrado) 
+
+O TEMPO DEVE SER MAIOR QUE x PARA ENTRAR NO TOP 10
+SEU TEMPO: 
+
+A TELA VITÓRIA ESTÁ ABRINDO APENAS QUANDO 
+NÃO ATINGE A PONTUAÇÃO NECESSÁRIA PARA ENTRAR NO RANKING-->
+
+
+ <!-- Você ficou com o 5º melhor tempo. Digite seu nome ou um nick para ficar registrado com o seu tempo no top 10 -->

@@ -1,0 +1,779 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100vh;
+    /* font-family: Arial, sans-serif; */
+}
+
+header{
+    height: 8vh;
+    background: linear-gradient(-45deg, #217a29, rgb(9, 88, 23));
+    background-size: 400% 400%;
+    animation: gradienteAnimado 10s ease infinite;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.336);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+#mode_icon, #menu_icon, #github_icon{
+    cursor: pointer;
+    font-size: 35px;
+    color: #ffffff;
+}
+
+#menu-list {
+    position: absolute;
+    top: 8.2vh;
+    left: 0;
+    /* width: 100%;
+    height: 100%; */
+    /* background-color: aqua; */
+    background: linear-gradient(-45deg, #217a29, rgb(9, 88, 23));
+    background-size: 400% 400%;
+    animation: gradienteAnimado 10s ease infinite;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.336);
+    z-index: 9998; /* valor alto para sobrepor tudo */
+    color: white;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    border-bottom-right-radius: 20px;
+    color:  #ffffff;
+}
+
+@keyframes gradienteAnimado {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+#menu-list p a, #menu-list p{
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#menu-list p{
+    text-align: start;
+    margin-top: 8px;
+}
+
+.open#menu-list{
+    display: block;
+}
+
+.fundoBlack#fundo1 {
+    background-color: rgb(14, 32, 9);
+}
+
+#fundo1{
+    height: 84vh;
+    width: 100%;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer{
+    height: 8vh;
+    /* background-color: brown;*/
+    background: linear-gradient(-45deg, #217a29, rgb(9, 88, 23));
+    background-size: 400% 400%;
+    animation: gradienteAnimado 10s ease infinite;
+    box-shadow: 0 -8px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(45deg, #387a61a9, #52775e41);
+}
+
+#timer {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+h1 {
+    font-size: 22px;
+    margin-top: 15px;
+}
+
+#game {
+    display: grid;
+    gap: 5px;
+    padding: 5px;
+    max-width: 700px;
+    margin: auto;
+    /* background-color: red; */
+}
+
+/* 📱 Celular - 4 por linha */
+@media (max-width: 600px) {
+    #game {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2px;
+        justify-content: center;
+        max-width:380px;
+    }
+    #timer{
+        font-size: 16px;
+    }
+}
+
+/* Desktop - 5 por linha */
+@media (min-width: 601px) {
+    #game {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+.card {
+    /* aspect-ratio: 1 / 1.2; deixa quadrado automático */
+    /* aspect-ratio: 3/4; */
+    aspect-ratio: 3/3.2;
+    perspective: 1000px;
+    border-radius: 10px;
+    width: 100px;
+    /* background-color: #217a29; */
+    
+}
+
+.card.matched {
+    box-shadow: 0 0 12px #4caf50;
+    transform: scale(1.05);
+    transition: 0.3s;
+    border-radius: 10px;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    border-radius: 10px;
+}
+
+.card.flip .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    /* background: #1e3a8a; */
+    background: linear-gradient(-45deg, #103a14, rgb(186, 220, 192));
+    background-size: 400% 400%;
+    animation: gradienteAnimado 10s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    background: white;
+}
+
+.card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+    .card {
+        /* aspect-ratio: 1 / 1.2; deixa quadrado automático */
+        aspect-ratio: 3/3.5;
+        perspective: 200px;
+        border-radius: 10px;
+        width: 85px;
+        /* background-color: #217a29; */
+    }
+}
+
+#victory {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000071;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+#victory.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.victory-box {
+    width: 380px;
+    height: 250px;
+    background: rgb(190, 36, 36);
+    /* padding: 30px; */
+    border-radius: 15px;
+    text-align: center;
+    animation: pop 0.4s ease;
+    background-color: #4caf4f;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.336);
+}
+
+.victory-box #cabecalhoVic {
+    background: linear-gradient(-45deg, #217a29, rgb(9, 88, 23));
+    background-size: 400% 400%;
+    animation: gradienteAnimado 10s ease infinite;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.336);
+    border-top-right-radius: 14px;
+    border-top-left-radius: 14px;
+    width: 100%;
+    height: 20%;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.victory-box #textoVicInfo{
+    /* background-color: red; */
+    width: 100%;
+    height: 55%;
+    padding: 20px;
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+    text-align: center;
+}
+
+.victory-box #textoVicInfo h2 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: #1f2937;
+}
+
+.victory-box #textoVicInfo span {
+    /* display: block; */
+    /* margin-top: 8px; */
+    font-size: 18px;
+    color: #b91c1c;
+}
+
+.victory-box #buttonVic{
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+    width: 100%;
+    height: 25%;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+}
+
+#buttonVic, #textoVicInfo, #cabecalhoVic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .victory-box h2 {
+    margin-bottom: 20px;
+} */
+
+.victory-box button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(-45deg, #217a29, rgb(9, 88, 23));
+    background-size: 400% 400%;
+    animation: gradienteAnimado 10s ease infinite;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.victory-box button:hover {
+    background: linear-gradient(-45deg, #185a1e, rgb(6, 54, 15));
+    background-size: 400% 400%;
+    animation: gradienteAnimado 10s ease infinite;
+}
+
+.hidden {
+    display: none;
+}
+
+#nicknameModal{
+    width: 100%;
+    height: 100%;
+    background-color: #00000071;
+    display: none; /* display: none; */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content{
+    width: 380px;
+    height: 250px;
+    /* background-color: #2f7588; */
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.336);
+}
+
+.modal-content #cabecalhoMc {
+    background: linear-gradient(-45deg, #217a29, rgb(9, 88, 23));
+    background-size: 400% 400%;
+    animation: gradienteAnimado 10s ease infinite;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+}
+
+.modal-content #cabecalhoMc h2{
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+.modal-content #textoMc {
+    height: 50%;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.modal-content #textoMc p{
+    /* margin: 20px; */
+    font-size: 13px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.modal-content #inptBnt{
+    height: 35%;
+    width: 100%;
+    /* background-color: #6d2323; */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    /* gap: 18px; */
+}
+
+#inptBnt #nicknameInput {
+    width: 60%;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    margin-left: 10px;
+    text-align: center;
+}
+
+#inptBnt #saveScoreBtn {
+    width: 25%;  
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    color: #ffffff;
+    font-weight: bolder;
+    background: linear-gradient(-45deg, #217a29, rgb(9, 88, 23));
+    background-size: 400% 400%;
+    animation: gradienteAnimado 10s ease infinite;
+}
+
+#nicknameInput, #saveScoreBtn {
+    height: 40px;
+    /* border: none; */
+    border-color: #185a1e;
+}
+
+.ranking {
+    background-color: #97b9a271;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    /* max-width: 800px; */
+    margin: 0 auto;
+    position: absolute;
+    top: 0px;
+    margin: 0px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100;
+}
+
+#cabecalhoTo10{
+    width: 30%;
+    background: linear-gradient(-45deg, #217a29, rgb(9, 88, 23));
+    background-size: 400% 400%;
+    animation: gradienteAnimado 10s ease infinite;
+    /* margin: 20px auto; */
+    border-top-left-radius: 10px;
+    /* border-top-right-radius: 10px; */
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.336);
+}
+
+#cabecalhoTo10 h2{
+    margin-top: 3px;
+    color: #e2e8f0;
+}
+
+#btnFecharTop{
+    width: 30%;
+    display: flex;
+    justify-content: end;
+    align-items: center; 
+    /* background-color: rgba(207, 15, 15, 0.836); */
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.336);
+}
+
+#btnFecharTop button{
+    width: 40px;
+    height: 30px;
+    font-weight: bold;
+    color: #e2e8f0;
+    border: none;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    background: linear-gradient(-45deg, #217a29, rgb(9, 88, 23));
+    background-size: 400% 400%;
+    animation: gradienteAnimado 10s ease infinite;
+    text-align: center;
+    font-size: 27px;
+}
+
+#rankingList {
+    width: 30%;
+    background: linear-gradient(-45deg, #217a29, rgb(9, 88, 23));
+    background-size: 400% 400%;
+    animation: gradienteAnimado 10s ease infinite;
+    /* max-width: 600px; */
+    /* margin: 20px auto; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.336);
+}
+
+@media (max-width: 600px) {
+    #rankingList {
+        width: 85%;
+        /* background-color: #1e3a8a; */
+        /* max-width: 600px; */
+        /* margin: 20px auto; */
+    }
+    #cabecalhoTo10{
+        width: 85%;
+    }
+    #btnFecharTop{
+         width: 85%;
+    }
+}
+
+#rankingList div{
+    width: 96%;
+    /* background-color: #e2e8f0; */
+}
+
+.ranking-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    background: rgba(255, 255, 255, 0.842);
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.ranking-pos {
+    width: 40px;
+    font-weight: bold;
+    /* background-color: #217a29; */
+}
+
+.ranking-nome {
+    flex: 1;
+    text-align: left;
+    padding-left: 10px;
+    /* background-color: #b91c1c; */
+}
+
+.ranking-tempo {
+    width: 80px;
+    text-align: right;
+    font-family: monospace;
+} 
+
+@keyframes pop {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#melhorTempoIndividual {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    background-color: #00000071;
+}
+
+#melhorTempoIndividual #janelaMDI {
+    width: 250px;
+    height: 150px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.336);
+}
+
+#melhorTempoIndividual #janelaMDI #cabecalhoMDI {
+    height: 20%;
+    background: linear-gradient(-45deg, #217a29, rgb(9, 88, 23));
+    background-size: 400% 400%;
+    animation: gradienteAnimado 10s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#melhorTempoIndividual #janelaMDI #cabecalhoMDI span {
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#melhorTempoIndividual #janelaMDI #cabecalhoMDI div {
+    position: absolute;
+    display: flex;
+    width: 250px;
+    background-color: #b91c1c00;
+    align-items: center;
+    justify-content: end;
+    margin-right: 10px;}
+
+#melhorTempoIndividual #janelaMDI #cabecalhoMDI div i {
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+#melhorTempoIndividual #janelaMDI #conteudoMDI {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+}
+
+#melhorTempoIndividual #janelaMDI #conteudoMDI p {
+    font-size: 35px;
+    font-weight: bold;
+    color:#185a1e
+}
+
+#sobreFundo {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: #00000071;
+}
+
+#sobreJanela {
+    width: 350px;
+    height: 400px;
+    background-color: #e2e8f0;
+    border-radius: 10px;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.336);
+}
+
+#cabecalhoJanelaSobre {
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    height: 8%;
+    background: linear-gradient(-45deg, #217a29, rgb(9, 88, 23));
+    background-size: 400% 400%;
+    animation: gradienteAnimado 10s ease infinite;
+    display: flex;
+    /* justify-content: end; */
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#divClosedSobre {
+    position: absolute;
+    /* width: 100%;
+    height: 100%; */
+    background-color: #b91c1c00;
+    width: 350px;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+#closedSobre {
+    color: white;
+    border: none;
+    border-radius: 100px;
+    width: 39px;
+    height: 39px;
+    font-size: 24px;
+    background-color: #185a1e00;
+}
+
+#conteudoJanelaSobre {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 92%;
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#conteudoJanelaSobre span{
+    margin-left: 15px;
+    margin-right: 15px;
+
+}
+
+/* rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if
+          request.time < timestamp.date(2026, 3, 21);
+    }
+  }
+} */
+
+/* rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /ranking/{docId} {
+      allow read: if true;
+      allow write: if true;
+    }
+  }
+} */
+
+/* Configure também o Firebase Hosting para este app */
+
+/* <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyC1HsHvXCG3XLVDuo0Cqf31irqHHKAQQjY",
+    authDomain: "jogo-memoria-rankiing.firebaseapp.com",
+    projectId: "jogo-memoria-rankiing",
+    storageBucket: "jogo-memoria-rankiing.firebasestorage.app",
+    messagingSenderId: "463059178314",
+    appId: "1:463059178314:web:e82184b63234bef57767b3",
+    measurementId: "G-D7VWWTN48R"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script> */
+
+/* .ranking {
+   margin-top: 20px;  
+} */
+
+/* .ranking p {
+  margin: 5px 0;
+}  */
